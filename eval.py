@@ -18,7 +18,7 @@ from synthesizer import Synthesizer
 #  'Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.',
 #]
 
-sentences = [
+sentences0 = [
   'ta1 jing3 ti4 de5 xia4 le5 chuang2,',
   'gei3 liang3 ge5 sun1 zi5 ye4 hao3 bei4 zi5,',
   'you4 na2 guo4 yi1 ba3 da4 yi3 zi5, ba3 jie3 mei4 lia3 dang3 zhu4 gang1 zou3 dao4 ke4 ting1 jiu4 bei4 ren2 lan2 yao1 bao4 zhu4 le5.',
@@ -30,6 +30,18 @@ sentences = [
   'lian2 dui4 zhi3 liu2 xia4 yi4 ming2 zhi2 ban1 yuan2, chui1 shi4 yuan2, si4 yang3 yuan2, wei4 sheng1 yuan2 deng3 ye3 lie4 dui4 pao3 bu4 gan2 wang3 zai1 qu1.',
   'yi1 jiu3 wu3 ling2 nian2 ba1 yue4 zhong1 yang1 ren2 min2 zheng4 fu3 zheng4 wu4 yuan4 ban1 bu4 le5,',
   'bao3 zhang4 fa1 ming2 quan2 yu3 zhuan1 li4 quan2 zan4 xing2 tiao2 li4.',
+]
+
+sentences = [
+    'P ai4 D a4 X ing1 , N i3 Sh ix4 H ai3 M ian2 B ao3 B ao1 D e5 H ao3 P eng2 Y ou3 .',
+    'J in1 T ian1 T ian1 Q i4 Zh en1 H ao3 AA a5 . N i3 J iu4 Sh ix4 G e4 B a4 G e3 .',
+    'AA ai4 Q ing2 S an1 Sh ix2 L iu4 J i4 , AA ai1 Y o5 AA ai1 Y o5 AA ai1 Y o5 .',
+    'EE er4 L e5 B a1 J i1 D e5 W o3 , H e2 EE er4 L e5 B a1 J i1 D e5 N i3 , Zh en1 Sh ix4 J ve2 P ei4 AA a5 .',
+    'T ian1 AA a5 , Zh e4 Sh ix4 Sh ang4 Z en3 M e5 H ui4 Y ou3 N i3 Zh e4 Zh ong3 Sh a3 B i1 . X in1 Q ing2 B u4 H ao3 , L an3 D e2 Sh uo1 N i3 .',
+    'T ian1 K ong1 Y i1 Sh eng1 J v4 X iang3 , L ao3 Z iy3 Sh an3 L iang4 D eng1 Ch ang3 .',
+    'K ai1 Sh en2 M e5 W an2 X iao4 , W o3 C ai2 B u4 Y ao4 G en1 N i3 P ai1 T uo1 N e5 .',
+    'R u2 G uo3 AA a5 W o3 N eng2 AA a5 Z ai4 C iy3 K e4 AA a5 T u3 Ch u1 L ai2 AA a5 J iu4 B u4 H ui4 Y ou3 N a4 M e5 D uo1 AA ai4 B u4 AA ai4 D e5 Sh ix4 Q ing2 L e5 B a1 ,',
+    'X in1 H ao3 L ei4 N e5 , AA ao2 W u1 AA ao2 AA ao2 W u2 .' ,
 ]
 
 def get_output_base_path(checkpoint_path):
