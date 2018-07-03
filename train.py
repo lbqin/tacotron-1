@@ -125,12 +125,12 @@ def train(log_dir, args):
 def main():
   parser = argparse.ArgumentParser()
   parser.add_argument('--base_dir', default=os.path.expanduser('/home/research/data/speech/tacotron'))
-  parser.add_argument('--input', default='training/train.txt')
+  parser.add_argument('--input', default='training2/train.txt')
   parser.add_argument('--model', default='tacotron')
-  parser.add_argument('--name', help='Name of the run. Used for logging. Defaults to model name.')
+  parser.add_argument('--name', default='hfnn-ph',help='Name of the run. Used for logging. Defaults to model name.')
   parser.add_argument('--hparams', default='',
     help='Hyperparameter overrides as a comma-separated list of name=value pairs')
-  parser.add_argument('--restore_step', type=int, help='Global step to restore from checkpoint.')
+  parser.add_argument('--restore_step', type=int,default=76000, help='Global step to restore from checkpoint.')
   parser.add_argument('--summary_interval', type=int, default=100,
     help='Steps between running summary ops.')
   parser.add_argument('--checkpoint_interval', type=int, default=1000,

@@ -26,7 +26,7 @@ valid_symbols = [
   'uai1','uai2','uai3','uai4','uai5','uan1','uan2','uan3','uan4','uan5','uang1','uang2',
   'uang3','uang4','uang4','uang5','ui1','ui2','ui3','ui4','ui5','un1','un2','un3','un4','un5','uo1',
   'uo2','uo3','uo4','uo5','v1','v2','v3','v4','v5','van1','van2','van3','van4','van5',
-  've1','ve2','ve3','ve4','ve5','vn1','vn2','vn3','vn4','vn5',',','.','?','!',
+  've1','ve2','ve3','ve4','ve5','vn1','vn2','vn3','vn4','vn5',',','.','?','!',' ',':','(',')',';','-','\''
 ]
 
 _valid_symbol_set = set(valid_symbols)
