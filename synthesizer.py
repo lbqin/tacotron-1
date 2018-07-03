@@ -6,16 +6,17 @@ from librosa import effects
 from models import create_model
 from text import text_to_sequence
 from util import audio
-
+from datasets.datafeeder import _read_labfile
 
 class Synthesizer:
   def load(self, checkpoint_path, model_name='tacotron'):
     print('Constructing model: %s' % model_name)
     inputs = tf.placeholder(tf.int32, [1, None], 'inputs')
     input_lengths = tf.placeholder(tf.int32, [1], 'input_lengths')
+    labfeats = tf.placeholder(tf.float32, [1, None,546], 'lab_features')
     with tf.variable_scope('model') as scope:
       self.model = create_model(model_name, hparams)
-      self.model.initialize(inputs, input_lengths)
+      self.model.initialize(inputs, input_lengths,lab_features=labfeats)
       self.wav_output = audio.inv_spectrogram_tensorflow(self.model.linear_outputs[0])
 
     print('Loading checkpoint: %s' % checkpoint_path)
@@ -25,16 +26,18 @@ class Synthesizer:
     saver.restore(self.session, checkpoint_path)
 
 
-  def synthesize(self, text):
+  def synthesize(self, text,filename):
     cleaner_names = [x.strip() for x in hparams.cleaners.split(',')]
     seq = text_to_sequence(text, cleaner_names)
+    lab = _read_labfile(os.path.join(self._datadir, filename)+'.lab')
     feed_dict = {
       self.model.inputs: [np.asarray(seq, dtype=np.int32)],
-      self.model.input_lengths: np.asarray([len(seq)], dtype=np.int32)
+      self.model.input_lengths: np.asarray([len(seq)], dtype=np.int32),
+      self.model.lab_features: [np.asarray(lab, dtype=np.float32)],
     }
     wav = self.session.run(self.wav_output, feed_dict=feed_dict)
     wav = audio.inv_preemphasis(wav)
-    wav = wav[:audio.find_endpoint(wav, min_silence_sec=1)]
+    wav = wav[:audio.find_endpoint(wav)]
     out = io.BytesIO()
     audio.save_wav(wav, out)
     return out.getvalue()

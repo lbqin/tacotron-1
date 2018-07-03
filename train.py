@@ -7,7 +7,8 @@ import subprocess
 import time
 import tensorflow as tf
 import traceback
-
+import io
+from text import text_to_sequence
 from datasets.datafeeder import DataFeeder
 from hparams import hparams, hparams_debug_string
 from models import create_model
@@ -46,7 +47,8 @@ def time_string():
 def train(log_dir, args):
   commit = get_git_commit() if args.git else 'None'
   checkpoint_path = os.path.join(log_dir, 'model.ckpt')
-  input_path = os.path.join(args.base_dir, args.input)
+  #input_path = os.path.join(args.base_dir, args.input)
+  input_path =  args.input
   log('Checkpoint path: %s' % checkpoint_path)
   log('Loading training data from: %s' % input_path)
   log('Using model: %s' % args.model)
@@ -61,7 +63,7 @@ def train(log_dir, args):
   global_step = tf.Variable(0, name='global_step', trainable=False)
   with tf.variable_scope('model') as scope:
     model = create_model(args.model, hparams)
-    model.initialize(feeder.inputs, feeder.input_lengths, feeder.mel_targets, feeder.linear_targets)
+    model.initialize(feeder.inputs, feeder.input_lengths, feeder.mel_targets, feeder.linear_targets,feeder.lab_features)
     model.add_loss()
     model.add_optimizer(global_step)
     stats = add_stats(model)
@@ -71,7 +73,7 @@ def train(log_dir, args):
   time_window = ValueWindow(100)
   loss_window = ValueWindow(100)
   saver = tf.train.Saver(max_to_keep=5, keep_checkpoint_every_n_hours=2)
-
+  #testSentences=loadtestfile(args)
   # Train!
   with tf.Session() as sess:
     try:
@@ -109,26 +111,51 @@ def train(log_dir, args):
           log('Saving checkpoint to: %s-%d' % (checkpoint_path, step))
           saver.save(sess, checkpoint_path, global_step=step)
           log('Saving audio and alignment...')
-          input_seq, spectrogram, alignment = sess.run([
-            model.inputs[0], model.linear_outputs[0], model.alignments[0]])
+          input_seq, labfeat,spectrogram, alignment = sess.run([
+            model.inputs[0],model.lab_features[0], model.linear_outputs[0], model.alignments[0]])
           waveform = audio.inv_spectrogram(spectrogram.T)
           audio.save_wav(waveform, os.path.join(log_dir, 'step-%d-audio.wav' % step))
           plot.plot_alignment(alignment, os.path.join(log_dir, 'step-%d-align.png' % step),
             info='%s, %s, %s, step=%d, loss=%.5f' % (args.model, commit, time_string(), step, loss))
           log('Input: %s' % sequence_to_text(input_seq))
 
+          #for i, text in list(testSentences):
+	  #          path = os.path.join(log_dir, 'step-%d-%s.wav' % (step, i))
+	  #          with open(path, 'wb') as f:
+	  #                 f.write(synthesizeTest(text, model, sess))
+
     except Exception as e:
       log('Exiting due to exception: %s' % e, slack=True)
       traceback.print_exc()
       coord.request_stop(e)
 
+def loadtestfile(args):
+  test_path = args.test
+  with open(test_path, encoding='utf-8') as f:
+    sentences = [line.strip().split('|') for line in f]
+    return sentences
+
+def synthesizeTest(text,model,session):
+    cleaner_names = [x.strip() for x in hparams.cleaners.split(',')]
+    seq = text_to_sequence(text, cleaner_names)
+    feed_dict = {
+      model.inputs: [np.asarray(seq, dtype=np.int32)],
+      model.input_lengths: np.asarray([len(seq)], dtype=np.int32)
+    }
+    wav = session.run(audio.inv_spectrogram_tensorflow(model.linear_outputs[0]), feed_dict=feed_dict)
+    wav = audio.inv_preemphasis(wav)
+    wav = wav[:audio.find_endpoint(wav)]
+    out = io.BytesIO()
+    audio.save_wav(wav, out)
+    return out.getvalue()
 
 def main():
   parser = argparse.ArgumentParser()
   parser.add_argument('--base_dir', default=os.path.expanduser('/home/research/data/speech/tacotron'))
-  parser.add_argument('--input', default='training/train.txt')
+  parser.add_argument('--input', default='training3/train.txt')
+  parser.add_argument('--test', default='training/test.txt')
   parser.add_argument('--model', default='tacotron')
-  parser.add_argument('--name', help='Name of the run. Used for logging. Defaults to model name.')
+  parser.add_argument('--name', default='lab',help='Name of the run. Used for logging. Defaults to model name.')
   parser.add_argument('--hparams', default='',
     help='Hyperparameter overrides as a comma-separated list of name=value pairs')
   parser.add_argument('--restore_step', type=int, help='Global step to restore from checkpoint.')
