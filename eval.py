@@ -31,17 +31,17 @@ sentences1 = [
     'X in1 H ao3 L ei4 N e5 , AA ao2 W u1 AA ao2 AA ao2 W u2 .' ,
 ]
 
-testSentence2 = ['hf15001':'J ian4 R en2 J iu4 Sh ix4 J iao3 Q ing2 .',
-'hf15013':'F ang4 B u4 X ia4 R ong2 H ua2 F u4 G ui4 D e5 R en2 , J iu4 Y ong3 Y van3 Ch eng3 B u4 L iao3 D a4 Q i4 H ou4 .',
-'hf15037':'Y ou3 Sh ix2 H ou4 B u4 Zh eng1 , B i3 N eng2 Zh eng1 H ui4 Zh eng1 Zh ix1 R en2 Y ou3 F u2 D uo1 L e5 .',
-'hf15061':'M ei2 Y ou3 H uang2 Sh ang4 D e5 Zh ix3 Y i4 W o3 J ve2 B u4 J iu4 S iy3 .',
-'hf15067':'B ie2 Sh uo1 B en3 G ong1 Y e3 H uai2 G uo4 L ong2 T ai1 , J iu4 S uan4 M ei2 H uai2 G uo4 , B en3 G ong1 Y e3 J ian4 D uo1 L e5 . D ao3 Sh ix4 M ei2 J ian4 G uo4 N i3 Zh e4 Y ang4 , H uai2 L e5 G e4 H ai2 Z iy5 X iang4 J ian3 L e5 G e4 Y van2 B ao3 Sh ix4 D e5 D ao4 Ch u4 X ian3 B ai3 , D ao4 D i3 Sh ix4 M ei2 J ian4 G uo4 Sh ix4 M ian4 D e5 X iao3 J ia1 Z iy3 .',
-'hf15211':'H uang2 Sh ang4 D e5 Y i4 S iy1 Sh ix4 , J iao1 Y ou2 H uang2 H ou4 N iang2 N iang2 Q van2 Q van2 Z uo4 Zh u3 .',
-'hf15217':'Zh en1 Sh ix4 D ui4 B u4 Zh u4 L e5 , Ch eng1 H u1 G uan4 L e5 N in2 N iang2 N iang2 , Zh ou4 R an2 Y ao4 J iao4 N i3 D a2 Y ing1 , H ai2 Zh en1 Sh ix4 B u4 X i2 G uan4 N e5 .',
-'hf15223':'N i3 H u2 Sh uo1 , H uang2 Sh ang4 Z en3 M e5 H ui4 D ui4 W o3 M ei2 Y ou3 Zh en1 X in1 .',
-'hs_zh_jj_lbx_03355':'W o3 D a3 S iy3 Y i1 G e4 W o1 K ou4 W o3 G ou4 B en3 , W o3 D a3 B u4 S iy3 W o1 K ou4 F an3 B ei4 W o1 K ou4 D a3 S iy3 W o3 X in1 G an1 .',
-'hs_zh_jj_lbx_03356':'J ian1 L i4 D e5 H ei1 L iang4 Y a1 M ing2 C ong2 N a4 J v4 S iy3 Sh ix1 Sh ang4 X iang4 G ou1 W ai4 X iang3 Zh e5 , AA an4 H ong2 D e5 X ie3 W ei4 Ch ao2 Zh e5 G ou1 K ou3 G ou1 W ai4 X iang3 X iang3 L iang4 L iang4 D e5 M an4 Y i4 .',
-]
+testSentence2 = {'hf15001':'J ian4 R en2 J iu4 Sh ix4 J iao3 Q ing2',
+'hf15013':'F ang4 B u4 X ia4 R ong2 H ua2 F u4 G ui4 D e5 R en2 , J iu4 Y ong3 Y van3 Ch eng3 B u4 L iao3 D a4 Q i4 H ou4',
+'hf15037':'Y ou3 Sh ix2 H ou4 B u4 Zh eng1 , B i3 N eng2 Zh eng1 H ui4 Zh eng1 Zh ix1 R en2 Y ou3 F u2 D uo1 L e5',
+'hf15061':'M ei2 Y ou3 H uang2 Sh ang4 D e5 Zh ix3 Y i4 W o3 J ve2 B u4 J iu4 S iy3',
+'hf15067':'B ie2 Sh uo1 B en3 G ong1 Y e3 H uai2 G uo4 L ong2 T ai1 , J iu4 S uan4 M ei2 H uai2 G uo4 , B en3 G ong1 Y e3 J ian4 D uo1 L e5 . D ao3 Sh ix4 M ei2 J ian4 G uo4 N i3 Zh e4 Y ang4 , H uai2 L e5 G e4 H ai2 Z iy5 X iang4 J ian3 L e5 G e4 Y van2 B ao3 Sh ix4 D e5 D ao4 Ch u4 X ian3 B ai3 , D ao4 D i3 Sh ix4 M ei2 J ian4 G uo4 Sh ix4 M ian4 D e5 X iao3 J ia1 Z iy3',
+'hf15211':'H uang2 Sh ang4 D e5 Y i4 S iy1 Sh ix4 , J iao1 Y ou2 H uang2 H ou4 N iang2 N iang2 Q van2 Q van2 Z uo4 Zh u3',
+'hf15217':'Zh en1 Sh ix4 D ui4 B u4 Zh u4 L e5 , Ch eng1 H u1 G uan4 L e5 N in2 N iang2 N iang2 , Zh ou4 R an2 Y ao4 J iao4 N i3 D a2 Y ing1 , H ai2 Zh en1 Sh ix4 B u4 X i2 G uan4 N e5',
+'hf15223':'N i3 H u2 Sh uo1 , H uang2 Sh ang4 Z en3 M e5 H ui4 D ui4 W o3 M ei2 Y ou3 Zh en1 X in1',
+'hs_zh_jj_lbx_03355':'W o3 D a3 S iy3 Y i1 G e4 W o1 K ou4 W o3 G ou4 B en3 , W o3 D a3 B u4 S iy3 W o1 K ou4 F an3 B ei4 W o1 K ou4 D a3 S iy3 W o3 X in1 G an1',
+'hs_zh_jj_lbx_03356':'J ian1 L i4 D e5 H ei1 L iang4 Y a1 M ing2 C ong2 N a4 J v4 S iy3 Sh ix1 Sh ang4 X iang4 G ou1 W ai4 X iang3 Zh e5 , AA an4 H ong2 D e5 X ie3 W ei4 Ch ao2 Zh e5 G ou1 K ou3 G ou1 W ai4 X iang3 X iang3 L iang4 L iang4 D e5 M an4 Y i4',
+}
 
 
 def get_output_base_path(checkpoint_path):
@@ -56,10 +56,12 @@ def run_eval(args):
   synth = Synthesizer()
   synth.load(args.checkpoint)
   base_path = get_output_base_path(args.checkpoint)
+  i=0
   for (k,text) in  testSentence2.items(): 
   #for i, text in enumerate(sentences):
     path = '%s-%d.wav' % (base_path, i)
     print('Synthesizing: %s' % path)
+    i+=1
     with open(path, 'wb') as f:
       f.write(synth.synthesize(text,k))
 

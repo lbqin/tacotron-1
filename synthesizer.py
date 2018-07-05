@@ -7,6 +7,7 @@ from models import create_model
 from text import text_to_sequence
 from util import audio
 from datasets.datafeeder import _read_labfile
+import os
 
 class Synthesizer:
   def load(self, checkpoint_path, model_name='tacotron'):
@@ -14,6 +15,7 @@ class Synthesizer:
     inputs = tf.placeholder(tf.int32, [1, None], 'inputs')
     input_lengths = tf.placeholder(tf.int32, [1], 'input_lengths')
     labfeats = tf.placeholder(tf.float32, [1, None,546], 'lab_features')
+    self._datadir = 'testSent/'
     with tf.variable_scope('model') as scope:
       self.model = create_model(model_name, hparams)
       self.model.initialize(inputs, input_lengths,lab_features=labfeats)
