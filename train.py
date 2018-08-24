@@ -130,7 +130,7 @@ def main():
   parser.add_argument('--name', default='hfnn-ph',help='Name of the run. Used for logging. Defaults to model name.')
   parser.add_argument('--hparams', default='',
     help='Hyperparameter overrides as a comma-separated list of name=value pairs')
-  parser.add_argument('--restore_step', type=int,default=76000, help='Global step to restore from checkpoint.')
+  parser.add_argument('--restore_step', type=int,default=243000, help='Global step to restore from checkpoint.')
   parser.add_argument('--summary_interval', type=int, default=100,
     help='Steps between running summary ops.')
   parser.add_argument('--checkpoint_interval', type=int, default=1000,

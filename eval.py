@@ -40,7 +40,7 @@ sentences = [
     'T ian1 AA a5 , Zh e4 Sh ix4 Sh ang4 Z en3 M e5 H ui4 Y ou3 N i3 Zh e4 Zh ong3 Sh a3 B i1 . X in1 Q ing2 B u4 H ao3 , L an3 D e2 Sh uo1 N i3 .',
     'T ian1 K ong1 Y i1 Sh eng1 J v4 X iang3 , L ao3 Z iy3 Sh an3 L iang4 D eng1 Ch ang3 .',
     'K ai1 Sh en2 M e5 W an2 X iao4 , W o3 C ai2 B u4 Y ao4 G en1 N i3 P ai1 T uo1 N e5 .',
-    'R u2 G uo3 AA a5 W o3 N eng2 AA a5 Z ai4 C iy3 K e4 AA a5 T u3 Ch u1 L ai2 AA a5 J iu4 B u4 H ui4 Y ou3 N a4 M e5 D uo1 AA ai4 B u4 AA ai4 D e5 Sh ix4 Q ing2 L e5 B a1 ,',
+    'R u2 G uo3 AA a5 W o3 N eng2 AA a5 Z ai4 C iy3 K e4 AA a5 T u3 Ch u1 L ai2 AA a5 , J iu4 B u4 H ui4 Y ou3 N a4 M e5 D uo1 AA ai4 B u4 AA ai4 D e5 Sh ix4 Q ing2 L e5 B a1 .',
     'X in1 H ao3 L ei4 N e5 , AA ao2 W u1 AA ao2 AA ao2 W u2 .' ,
 ]
 
